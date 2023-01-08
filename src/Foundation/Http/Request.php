@@ -131,4 +131,12 @@ class Request
     {
         return true;
     }
+
+    /**
+     * Gets a header value by name.
+     */
+    public function getHeader(string $key): ?string
+    {
+        return $this->request()->headers->get($key);
+    }
 }

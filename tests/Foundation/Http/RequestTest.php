@@ -210,4 +210,18 @@ class RequestTest extends TestCase
         $this->requestStack->push(new Request());
         $sut->validate();
     }
+
+    /**
+     * @test
+     */
+    public function get_header(): void
+    {
+        $internalRequest = new Request();
+        $internalRequest->headers->set('X-Foo', 'bar');
+        $this->requestStack->push($internalRequest);
+        $sut = new Sut($this->requestStack, $this->util);
+
+        $this->assertSame('bar', $sut->getHeader('X-Foo'));
+        $this->assertNull($sut->getHeader('X-Missing'));
+    }
 }

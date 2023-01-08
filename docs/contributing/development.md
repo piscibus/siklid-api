@@ -40,6 +40,14 @@ docker compose down --remove-orphans
 All commands are supposed to be run from the root of the project inside the
 container.
 
+### JWT keypair
+
+To generate a new keypair for JWT, on the `php` container, run:
+
+```bash
+php bin/console lexik:jwt:generate-keypair --skip-if-exists
+````
+
 ## Test environment
 
 After cloning the repository and installing the dependencies, create
@@ -50,7 +58,9 @@ override the default environment variables for the test environment.
 <details>
 
 ```
+
 # define your env variables for the test env here
+
 KERNEL_CLASS='App\Kernel'
 APP_SECRET='$ecretf0rt3st'
 SYMFONY_DEPRECATIONS_HELPER=999999
@@ -66,7 +76,6 @@ MONGODB_DB=test
 REDIS_HOST=redis
 REDIS_PORT=6379
 ###< Redis ###
-
 
 ```
 
